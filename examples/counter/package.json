@@ -41,6 +41,7 @@
     "redux-devtools-filterable-log-monitor": "^0.6.6",
     "redux-devtools-chart-monitor": "^1.4.1",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "open": "^0.0.5"
   }
 }
