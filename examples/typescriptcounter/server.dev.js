@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+var config = require('./webpack.config.dev');
 var open = require('open');
 
 const port = 3000;
@@ -9,6 +9,7 @@ new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true,
+  contentBase: config.devServer.contentBase,
   stats: {
     colors: true
   }
