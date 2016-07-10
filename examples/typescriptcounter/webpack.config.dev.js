@@ -1,13 +1,14 @@
 var path = require('path');
 var webpack = require('webpack');
-
+var jsSrcPath = 'build';
+jsSrcPath = 'src';
 module.exports = {
   devtool: 'eval',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
-    './src/index'
+    './' + jsSrcPath + '/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -23,7 +24,10 @@ module.exports = {
   resolve: {
     alias: {
       //'redux-devtools': path.join(__dirname, '..', '..', 'src'),
-      'react': path.join(__dirname, 'node_modules', 'react')
+      'react': path.join(__dirname, 'node_modules', 'react'),
+
+      // Add '.ts' and '.tsx' as resolvable extensions.
+      extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx"]
     }
   },
   resolveLoader: {
@@ -34,7 +38,7 @@ module.exports = {
       test: /\.js$/,
       loaders: ['babel'],
       exclude: /node_modules/,
-      include: path.join(__dirname, 'src')
+      include: path.join(__dirname, jsSrcPath)
     }]
   }
 };

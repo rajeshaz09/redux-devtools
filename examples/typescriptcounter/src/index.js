@@ -5,25 +5,22 @@ import configureStore from './store/configureStore';
 import Root from './containers/Root';
 
 const store = configureStore();
-
-render(
-  <AppContainer>
-    <Root
-      store={ store }
-      />
-  </AppContainer>,
-  document.getElementById('root')
-);
+const myRender = () => {
+  console.log('render')
+  render(
+    <AppContainer>
+      <Root
+        store={ store }
+        />
+    </AppContainer>,
+    document.getElementById('root')
+  );
+}
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    render(
-      <AppContainer>
-        <Root
-          store={ store }
-        />
-      </AppContainer>,
-      document.getElementById('root')
-    );
-  });
+  myRender();
+  module.hot.accept('./containers/Root', myRender);
+}
+else {
+  render(<Root store={ store }/>);
 }
