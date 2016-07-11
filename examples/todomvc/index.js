@@ -10,7 +10,11 @@ const store = configureStore();
 render(
   <AppContainer>
     <Root
+<<<<<<< HEAD
       store={store}
+=======
+      store={ store }
+>>>>>>> gaearon/master
     />
   </AppContainer>,
   document.getElementById('root')
@@ -21,7 +25,11 @@ if (module.hot) {
     render(
       <AppContainer>
         <Root
+<<<<<<< HEAD
           store={store}
+=======
+          store={ store }
+>>>>>>> gaearon/master
         />
       </AppContainer>,
       document.getElementById('root')
