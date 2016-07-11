@@ -10,11 +10,7 @@ const store = configureStore();
 render(
   <AppContainer>
     <Root
-<<<<<<< HEAD
-      store={store}
-=======
       store={ store }
->>>>>>> gaearon/master
     />
   </AppContainer>,
   document.getElementById('root')
@@ -24,17 +20,9 @@ if (module.hot) {
   module.hot.accept('./containers/Root', () => {
     const RootContainer = require('./containers/Root').default;
     render(
-      <AppContainer>
-<<<<<<< HEAD
-        <Root
-<<<<<<< HEAD
-          store={store}
-=======
-=======
+      <AppContainer>\
         <RootContainer
->>>>>>> master
           store={ store }
->>>>>>> gaearon/master
         />
       </AppContainer>,
       document.getElementById('root')
