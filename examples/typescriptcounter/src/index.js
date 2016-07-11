@@ -10,9 +10,7 @@ render(
   <AppContainer>
     <Root
       store={ store }
-      />
     />
->>>>>>> gaearon/master
   </AppContainer>,
   document.getElementById('root')
 );
