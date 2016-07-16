@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Provider } from 'react-redux';
 import CounterApp from './CounterApp';
 import DevTools from './DevTools';
 
-export default class Root extends Component {
+class DevRoot extends React.Component<any, any> {
   render() {
     const { store } = this.props;
     return (
@@ -16,3 +16,5 @@ export default class Root extends Component {
     );
   }
 }
+
+export {DevRoot};
