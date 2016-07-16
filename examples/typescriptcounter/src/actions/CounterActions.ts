@@ -1,18 +1,16 @@
 import * as ActionTypes from '../constants/ActionTypes'
 import * as Redux from 'redux';
 
-interface ICounterAction{
-  type: string;
+import {ICounterAction} from '../constants/interfaces';
+
+const increment = (): ICounterAction => {
+  return { type: ActionTypes.INCREMENT_COUNTER }
+}
+const decrement = (): ICounterAction => {
+  return { type: ActionTypes.DECREMENT_COUNTER }
 }
 
-const increment = ():ICounterAction => {
-  return{type: ActionTypes.INCREMENT_COUNTER}
-}
-const decrement = ():ICounterAction => {
-  return{type: ActionTypes.DECREMENT_COUNTER}
-}
-
-const incrementIfOdd = ()=> {
+const incrementIfOdd = () => {
   return (dispatch: any, getState: any) => {
     const { counter } = getState();
 

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
+import {Counter} from '../reducers/counter';
 import DevTools from '../containers/DevTools';
 
 const enhancer = compose(
@@ -15,12 +15,13 @@ const enhancer = compose(
 );
 
 export default function configureStore(initialState: any) {
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(Counter, initialState, enhancer);
 
   if (module.hot) {
-    module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers'))
-    );
+    module.hot.accept('../reducers', () => {
+      const {reducer} = require('../reducers/counter');
+      return store.replaceReducer(reducer)
+    });
   }
 
   return store;
