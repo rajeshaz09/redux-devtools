@@ -1,16 +1,23 @@
 var path = require('path');
 var webpack = require('webpack');
-var jsSrcPath = 'build';
-jsSrcPath = 'src';
-var port = 4444;
+const istypescript = true;
+var settings ={
+  port: 4444,
+  jsSrcPath: 'src',
+  file: '/index'
+}
+if(istypescript){
+  settings.jsSrcPath = 'build';
+  settings.file = '/index'
+}
 module.exports = {
   devtool: 'eval',
-  port: port,
+  port: settings.port,
   entry: [
-    'webpack-dev-server/client?http://localhost:' + port,
+    'webpack-dev-server/client?http://localhost:' + settings.port,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
-    './' + jsSrcPath + '/index'
+    './' + settings.jsSrcPath + settings.file
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -24,23 +31,26 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
-    alias: {
+    root: path.resolve(settings.jsSrcPath),
+    extensions: ['', '.js', '.jsx'],
+  
+    //alias: {
       //'redux-devtools': path.join(__dirname, '..', '..', 'src'),
-      'react': path.join(__dirname, 'node_modules', 'react'),
+      //'react': path.join(__dirname, 'node_modules', 'react'),
 
       // Add '.ts' and '.tsx' as resolvable extensions.
-      extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx"]
-    }
+      //extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx"]
+    //}
   },
   resolveLoader: {
     'fallback': path.join(__dirname, 'node_modules')
   },
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /\.jsx$/,
       loaders: ['babel'],
       exclude: /node_modules/,
-      include: path.join(__dirname, jsSrcPath)
+      include: path.join(__dirname, settings.jsSrcPath)
     }]
   }
 };
