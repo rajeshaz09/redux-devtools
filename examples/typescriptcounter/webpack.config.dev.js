@@ -2,10 +2,12 @@ var path = require('path');
 var webpack = require('webpack');
 var jsSrcPath = 'build';
 jsSrcPath = 'src';
+var port = 4444;
 module.exports = {
   devtool: 'eval',
+  port: port,
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:' + port,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
     './' + jsSrcPath + '/index'
