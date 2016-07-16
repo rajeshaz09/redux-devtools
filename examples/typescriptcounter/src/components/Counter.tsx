@@ -1,11 +1,17 @@
-import React, { Component, PropTypes } from 'react';
 
-export default class Counter extends Component {
+import * as React from 'react';
+
+interface CounterProps{
+  increment():void;
+
+}
+
+export default class Counter extends React.Component<any, any> {
   static propTypes = {
-    increment: PropTypes.func.isRequired,
-    incrementIfOdd: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
-    counter: PropTypes.number.isRequired
+    increment: React.PropTypes.func.isRequired,
+    incrementIfOdd: React.PropTypes.func.isRequired,
+    decrement: React.PropTypes.func.isRequired,
+    counter: React.PropTypes.number.isRequired
   };
 
   render() {
