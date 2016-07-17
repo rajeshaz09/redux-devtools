@@ -1,15 +1,17 @@
-import * as ActionTypes from '../constants/ActionTypes';
+import {ActionCreator} from 'redux'
 
+import * as ActionTypes from '../constants/ActionTypes';
 import {ICounterAction} from '../constants/interfaces';
 
-const increment = (): ICounterAction => {
+
+const increment: ActionCreator<ICounterAction> = () => {
   return { type: ActionTypes.INCREMENT_COUNTER }
 }
-const decrement = (): ICounterAction => {
+const decrement: ActionCreator<ICounterAction> = () => {
   return { type: ActionTypes.DECREMENT_COUNTER }
 }
-
-const incrementIfOdd = () => {
+/*
+const incrementIfOdd : ActionCreator<ICounterAction> = () => {
   return (dispatch: any, getState: any) => {
     const { counter } = getState();
 
@@ -28,4 +30,5 @@ function incrementAsync() {
     }, 1000);
   };
 }
-export {increment, decrement, incrementIfOdd, incrementAsync};
+*/
+export {increment, decrement};//, incrementIfOdd, incrementAsync};

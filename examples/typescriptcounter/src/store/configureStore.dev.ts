@@ -1,12 +1,12 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, Reducer } from 'redux';
 import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
-import {RootReducer as Reducer} from '../reducers';
+import {RootReducer} from '../reducers';
 import DevTools from '../containers/DevTools';
 import {ICounterAction, RootState} from '../constants/interfaces';
 import {DefaultRootState} from '../constants/defaults';
 
-const enhancer = compose<RootState, {}, ICounterAction>(
+const enhancer = compose< Reducer<RootState>, any, any >(
   applyMiddleware(thunk),
   DevTools.instrument(),
   persistState(
@@ -17,11 +17,11 @@ const enhancer = compose<RootState, {}, ICounterAction>(
 );
 
 function ConfigureStore(initialState: RootState = DefaultRootState) {
-  const store = createStore<RootState>(Reducer, initialState, enhancer);
+  const store = createStore<RootState>(RootReducer, initialState, enhancer);
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
-      const reducer : typeof Reducer= (<any>require('../reducers')).RootReducer;
+      const reducer : typeof RootReducer= (<any>require('../reducers')).RootReducer;
       
       return store.replaceReducer(reducer)
     });
