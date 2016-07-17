@@ -1,9 +1,13 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
+import {RootReducer} from '../reducers';
+import {RootState} from '../constants/interfaces';
+import {DefaultRootState} from '../constants/defaults';
 
 const enhancer = applyMiddleware(thunk);
 
-export default function configureStore(initialState: any) {
-  return createStore(rootReducer, initialState, enhancer);
+function ConfigureStore(initialState: RootState = DefaultRootState) {
+  return createStore<RootState>(RootReducer, initialState, enhancer);
 }
+
+export {ConfigureStore};

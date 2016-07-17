@@ -1,6 +1,10 @@
+import * as Redux from 'redux';
 
-interface ICounterAction {
+interface ICounterAction extends Redux.Action {
     type: string;
 }
 type CounterState = number;
-export {ICounterAction, CounterState};
+type RootState = {
+    counter: CounterState;
+}
+export {ICounterAction, CounterState, RootState};

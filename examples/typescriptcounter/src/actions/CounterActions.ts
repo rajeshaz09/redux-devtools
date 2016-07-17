@@ -1,5 +1,4 @@
-import * as ActionTypes from '../constants/ActionTypes'
-import * as Redux from 'redux';
+import * as ActionTypes from '../constants/ActionTypes';
 
 import {ICounterAction} from '../constants/interfaces';
 
