@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {DevRoot} from './Root.dev';
 import {ProdRoot} from './Root.prod';
-let Root:any;
-if (process.env.NODE_ENV === 'production') {
-  Root = DevRoot;
-} else {
-  Root = ProdRoot;
+
+const configure = (): any => {
+  if (process.env.NODE_ENV === 'production') {
+    return DevRoot;
+  } else {
+    return ProdRoot;
+  }
 }
+let Root = configure();
 export {Root};

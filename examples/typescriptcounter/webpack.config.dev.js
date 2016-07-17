@@ -1,12 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 const istypescript = true;
-var settings ={
+var settings = {
   port: 4444,
   jsSrcPath: 'src',
   file: '/index'
 }
-if(istypescript){
+if (istypescript) {
   settings.jsSrcPath = 'build';
   settings.file = '/index'
 }
@@ -28,18 +28,21 @@ module.exports = {
     contentBase: './src'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
   ],
   resolve: {
     root: path.resolve(settings.jsSrcPath),
     extensions: ['', '.js', '.jsx'],
-  
-    //alias: {
-      //'redux-devtools': path.join(__dirname, '..', '..', 'src'),
-      //'react': path.join(__dirname, 'node_modules', 'react'),
 
-      // Add '.ts' and '.tsx' as resolvable extensions.
-      //extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx"]
+    //alias: {
+    //'redux-devtools': path.join(__dirname, '..', '..', 'src'),
+    //'react': path.join(__dirname, 'node_modules', 'react'),
+
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    //extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx"]
     //}
   },
   resolveLoader: {
