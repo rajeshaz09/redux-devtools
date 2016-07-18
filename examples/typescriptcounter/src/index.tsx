@@ -4,17 +4,20 @@ import * as Redux from 'redux';
 import * as ActionTypes from './constants/ActionTypes'
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import {ConfigureStore} from './store/configureStore';
-import {Root} from './containers/Root';
+//import ConfigureStore from './store/configureStore';
+//import * as Root from './containers/Root';rm 
 
-
+const Root: any = require('./containers/Root');
+const RootContainer = Root.default;
+const ConfigureStore: any = require('./store/configureStore');
 const rootElement = document.getElementById('root')
+console.log(ConfigureStore);
 
-const store = ConfigureStore();
+const store = ConfigureStore.default();
 
 render(
   <AppContainer>
-    <Root
+    <RootContainer
       store={ store }
       />
   </AppContainer>,
@@ -23,10 +26,11 @@ render(
 
 if (module.hot) {
   module.hot.accept('./containers/Root', () => {
-    const RootContainer: any = require('./containers/Root');
+    const container: any = require('./containers/Root');
+    const RootContainer = container.default;
     render(
       <AppContainer>
-        <RootContainer.Root
+        <RootContainer
           store={ store }
           />
       </AppContainer>,

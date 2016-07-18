@@ -8,6 +8,7 @@ import DiffMonitor from 'redux-devtools-diff-monitor';
 import FilterableLogMonitor from 'redux-devtools-filterable-log-monitor';
 import ChartMonitor from 'redux-devtools-chart-monitor';
 
+
 export default createDevTools(
   <DockMonitor toggleVisibilityKey='ctrl-h' changePositionKey='ctrl-q' changeMonitorKey='ctrl-m'>
     <LogMonitor />

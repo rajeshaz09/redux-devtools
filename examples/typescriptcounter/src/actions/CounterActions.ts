@@ -1,14 +1,14 @@
 import {ActionCreator} from 'redux'
 
-import * as ActionTypes from '../constants/ActionTypes';
+import {INCREMENT_COUNTER, DECREMENT_COUNTER}  from '../constants/ActionTypes';
 import {ICounterAction} from '../constants/interfaces';
 
 
 const increment: ActionCreator<ICounterAction> = () => {
-  return { type: ActionTypes.INCREMENT_COUNTER }
+  return { type: INCREMENT_COUNTER }
 }
 const decrement: ActionCreator<ICounterAction> = () => {
-  return { type: ActionTypes.DECREMENT_COUNTER }
+  return { type: DECREMENT_COUNTER }
 }
 /*
 const incrementIfOdd : ActionCreator<ICounterAction> = () => {

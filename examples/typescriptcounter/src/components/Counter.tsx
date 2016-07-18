@@ -1,23 +1,19 @@
-
 import * as React from 'react';
+import { Component, PropTypes } from 'react';
 
-interface CounterProps{
-  increment():void;
-}
-
-class Counter extends React.Component<any, any> {
+export default class Counter extends Component<any, any> {
   static propTypes = {
-    increment: React.PropTypes.func.isRequired,
-    //incrementIfOdd: React.PropTypes.func.isRequired,
-    decrement: React.PropTypes.func.isRequired,
-    counter: React.PropTypes.number.isRequired
+    increment: PropTypes.func.isRequired,
+    //incrementIfOdd: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired
   };
 
   render() {
     const { increment, incrementIfOdd, decrement, counter } = this.props;
     return (
       <p>
-        Clicked: {counter} times 0
+        Clicked: {counter} times
         {' '}
         <button onClick={increment}>+</button>
         {' '}
@@ -28,4 +24,3 @@ class Counter extends React.Component<any, any> {
     );
   }
 }
-export {Counter}
