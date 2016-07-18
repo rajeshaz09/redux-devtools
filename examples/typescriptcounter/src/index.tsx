@@ -11,8 +11,6 @@ const Root: any = require('./containers/Root');
 const RootContainer = Root.default;
 const ConfigureStore: any = require('./store/configureStore');
 const rootElement = document.getElementById('root')
-console.log(ConfigureStore);
-
 const store = ConfigureStore.default();
 
 render(
