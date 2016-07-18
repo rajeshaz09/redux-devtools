@@ -3,7 +3,7 @@
         "outDir": "./build/",
         "sourceMap": false,
         "noImplicitAny": true,
-        "module": "commonjs",
+        "module": "es6",
         "target": "es6",
         "jsx": "preserve",
         "pretty": true

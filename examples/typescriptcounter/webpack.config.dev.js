@@ -17,7 +17,7 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:' + settings.port,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
-    './' + settings.jsSrcPath + settings.file
+    path.resolve('./' + settings.jsSrcPath + settings.file)
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -25,32 +25,29 @@ module.exports = {
     publicPath: '/static/'
   },
   devServer: {
-    contentBase: './src'
+    contentBase: path.resolve('./src')
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     root: path.resolve(settings.jsSrcPath),
-    extensions: ['', '.js', '.jsx'],
+    extensions: ["", ".webpack.js", ".web.js", '.js', '.jsx'],
 
-    //alias: {
+    alias: {
     //'redux-devtools': path.join(__dirname, '..', '..', 'src'),
     //'react': path.join(__dirname, 'node_modules', 'react'),
 
     // Add '.ts' and '.tsx' as resolvable extensions.
-    //extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx"]
-    //}
+    extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"]
+    }
   },
   resolveLoader: {
     'fallback': path.join(__dirname, 'node_modules')
   },
   module: {
     loaders: [{
-      test: /\.jsx$/,
+      test: /\.jsx?$/,
       loaders: ['babel'],
       exclude: /node_modules/,
       include: path.join(__dirname, settings.jsSrcPath)
