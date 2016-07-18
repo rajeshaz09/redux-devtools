@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { createStore, applyMiddleware, compose, Reducer } from 'redux';
 import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
@@ -21,9 +22,9 @@ function ConfigureStore(initialState: RootState = DefaultRootState) {
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
-      const reducer : typeof RootReducer= (<any>require('../reducers')).RootReducer;
-      
-      return store.replaceReducer(reducer)
+      const reducer : any = require('../reducers');
+      console.log(reducer);
+      return store.replaceReducer(reducer.RootReducer)
     });
   }
 

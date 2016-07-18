@@ -2,7 +2,7 @@ import * as ActionTypes from '../constants/ActionTypes'
 import {ICounterAction, CounterState} from '../constants/interfaces';
 import {DefaultCounterState} from '../constants/defaults';
 
-const CounterReducer = (state: CounterState = DefaultCounterState, action: ICounterAction): CounterState => {
+function CounterReducer (state: CounterState = DefaultCounterState, action: ICounterAction): CounterState  {
   switch (action.type) {
     case ActionTypes.INCREMENT_COUNTER:
       return state + 1;
@@ -12,4 +12,5 @@ const CounterReducer = (state: CounterState = DefaultCounterState, action: ICoun
       return state;
   }
 }
+
 export {CounterReducer};

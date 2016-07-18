@@ -3,13 +3,12 @@ import * as React from 'react';
 
 interface CounterProps{
   increment():void;
-
 }
 
-export default class Counter extends React.Component<any, any> {
+class Counter extends React.Component<any, any> {
   static propTypes = {
     increment: React.PropTypes.func.isRequired,
-    incrementIfOdd: React.PropTypes.func.isRequired,
+    //incrementIfOdd: React.PropTypes.func.isRequired,
     decrement: React.PropTypes.func.isRequired,
     counter: React.PropTypes.number.isRequired
   };
@@ -29,3 +28,4 @@ export default class Counter extends React.Component<any, any> {
     );
   }
 }
+export {Counter}

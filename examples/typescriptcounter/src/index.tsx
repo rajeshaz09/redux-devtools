@@ -5,7 +5,7 @@ import * as ActionTypes from './constants/ActionTypes'
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import {ConfigureStore} from './store/configureStore';
-import {Root as RootContainer} from './containers/Root';
+import {Root} from './containers/Root';
 
 
 const rootElement = document.getElementById('root')
@@ -14,7 +14,7 @@ const store = ConfigureStore();
 
 render(
   <AppContainer>
-    <RootContainer
+    <Root
       store={ store }
       />
   </AppContainer>,
@@ -23,10 +23,10 @@ render(
 
 if (module.hot) {
   module.hot.accept('./containers/Root', () => {
-    const Root: typeof RootContainer = require('./containers/Root');
+    const RootContainer: any = require('./containers/Root');
     render(
       <AppContainer>
-        <Root
+        <RootContainer.Root
           store={ store }
           />
       </AppContainer>,
