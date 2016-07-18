@@ -4,9 +4,9 @@ import {ProdRoot} from './Root.prod';
 
 const configure = (): any => {
   if (process.env.NODE_ENV === 'production') {
-    return DevRoot;
-  } else {
     return ProdRoot;
+  } else {
+    return DevRoot;
   }
 
 }
