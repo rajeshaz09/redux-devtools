@@ -5,7 +5,7 @@ import {DefaultCounterState} from '../constants/defaults';
 export default function counter(state: CounterState = DefaultCounterState, action: ICounterAction): CounterState {
   switch (action.type) {
     case INCREMENT_COUNTER:
-      return state + 3;
+      return state + 1;
     case DECREMENT_COUNTER:
       return state - 1;
     default:
