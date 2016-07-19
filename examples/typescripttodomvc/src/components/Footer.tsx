@@ -1,14 +1,18 @@
-import React, { PropTypes, Component } from 'react';
-import classnames from 'classnames';
+import * as React from 'react';
+import { PropTypes, Component } from 'react';
+import * as classnames from 'classnames';
 import { SHOW_ALL, SHOW_MARKED, SHOW_UNMARKED } from '../constants/TodoFilters';
 
-const FILTER_TITLES = {
+interface IFilterTypes {   
+   [name: string]: string;
+}
+const FILTER_TITLES: IFilterTypes = {
   [SHOW_ALL]: 'All',
   [SHOW_UNMARKED]: 'Active',
   [SHOW_MARKED]: 'Completed'
 };
 
-export default class Footer extends Component {
+export default class Footer extends Component<any, any> {
   static propTypes = {
     markedCount: PropTypes.number.isRequired,
     unmarkedCount: PropTypes.number.isRequired,
@@ -44,7 +48,7 @@ export default class Footer extends Component {
     );
   }
 
-  renderFilterLink(filter) {
+  renderFilterLink(filter: string) {
     const title = FILTER_TITLES[filter];
     const { filter: selectedFilter, onShow } = this.props;
 

@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import * as React from 'react';
+import { PropTypes, Component } from 'react';
+import * as classnames from 'classnames';
 
-export default class TodoTextInput extends Component {
+export default class TodoTextInput extends Component<any, any> {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
     text: PropTypes.string,
@@ -10,7 +11,7 @@ export default class TodoTextInput extends Component {
     newTodo: PropTypes.bool
   };
 
-  constructor(props, context) {
+  constructor(props: any, context: any) {
     super(props, context);
     this.state = {
       text: this.props.text || ''

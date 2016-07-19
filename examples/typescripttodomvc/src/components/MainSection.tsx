@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import * as React from 'react';
+import { PropTypes, Component } from 'react';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
 import { SHOW_ALL, SHOW_MARKED, SHOW_UNMARKED } from '../constants/TodoFilters';
@@ -9,13 +10,13 @@ const TODO_FILTERS = {
   [SHOW_MARKED]: todo => todo.marked
 };
 
-export default class MainSection extends Component {
+export default class MainSection extends Component<any, any> {
   static propTypes = {
     todos: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired
   };
 
-  constructor(props, context) {
+  constructor(props: any, context: any) {
     super(props, context);
     this.state = { filter: SHOW_ALL };
   }

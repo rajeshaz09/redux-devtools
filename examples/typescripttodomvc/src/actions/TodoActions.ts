@@ -1,20 +1,20 @@
 import * as types from '../constants/ActionTypes';
 
-export function addTodo(text) {
+export function addTodo(text: string) {
   return {
     type: types.ADD_TODO,
     text
   };
 }
 
-export function deleteTodo(id) {
+export function deleteTodo(id: number) {
   return {
     type: types.DELETE_TODO,
     id
   };
 }
 
-export function editTodo(id, text) {
+export function editTodo(id: number, text: string) {
   return {
     type: types.EDIT_TODO,
     id,
@@ -22,7 +22,7 @@ export function editTodo(id, text) {
   };
 }
 
-export function markTodo(id) {
+export function markTodo(id: number) {
   return {
     type: types.MARK_TODO,
     id
