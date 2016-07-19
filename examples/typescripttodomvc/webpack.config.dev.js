@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-const istypescript = true;
+const istypescript = false;
 var settings = {
   port: 4445,
   jsSrcPath: 'src',
