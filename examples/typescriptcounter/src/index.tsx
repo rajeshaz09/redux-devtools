@@ -7,32 +7,33 @@ import { AppContainer } from 'react-hot-loader';
 //import ConfigureStore from './store/configureStore';
 //import * as Root from './containers/Root';rm 
 
-const Root: any = require('./containers/Root');
-const RootContainer = Root.default;
+let Root: any = require('./containers/Root');
+let RootContainer = Root.default;
 const ConfigureStore: any = require('./store/configureStore');
 const rootElement = document.getElementById('root')
 const store = ConfigureStore.default();
 
-render(
-  <AppContainer>
-    <RootContainer
-      store={ store }
-      />
-  </AppContainer>,
-  document.getElementById('root')
-);
+const myRender = () => {
+  Root = require('./containers/Root');
+  RootContainer = Root.default;
+  render(
+    <AppContainer>
+      <RootContainer
+        store={ store }
+        />
+    </AppContainer>,
+    rootElement
+  );
+};
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const container: any = require('./containers/Root');
-    const RootContainer = container.default;
-    render(
-      <AppContainer>
-        <RootContainer
-          store={ store }
-          />
-      </AppContainer>,
-      document.getElementById('root')
-    );
-  });
+  myRender();
+  module.hot.accept('./containers/Root', myRender);
+} else {
+  render(
+      <RootContainer
+        store={ store }
+        />,
+    rootElement
+  )
 }
