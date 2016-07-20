@@ -5,7 +5,7 @@ interface ICounterAction extends Redux.Action {
 }
 
 type CounterState = number;
-type RootState = {
+interface RootState  {
     counter: CounterState;
 }
 

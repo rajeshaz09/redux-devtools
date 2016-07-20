@@ -2,13 +2,7 @@ import * as React from 'react';
 import { PropTypes, Component } from 'react';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
-import { SHOW_ALL, SHOW_MARKED, SHOW_UNMARKED } from '../constants/TodoFilters';
-
-const TODO_FILTERS = {
-  [SHOW_ALL]: () => true,
-  [SHOW_UNMARKED]: todo => !todo.marked,
-  [SHOW_MARKED]: todo => todo.marked
-};
+import { TODO_FILTERS, SHOW_ALL, SHOW_MARKED, SHOW_UNMARKED } from '../constants/TodoFilters';
 
 export default class MainSection extends Component<any, any> {
   static propTypes = {
@@ -55,7 +49,7 @@ export default class MainSection extends Component<any, any> {
     );
   }
 
-  renderToggleAll(markedCount) {
+  renderToggleAll(markedCount: boolean) {
     const { todos, actions } = this.props;
     if (todos.length > 0) {
       return (
@@ -67,7 +61,7 @@ export default class MainSection extends Component<any, any> {
     }
   }
 
-  renderFooter(markedCount) {
+  renderFooter(markedCount: number) {
     const { todos } = this.props;
     const { filter } = this.state;
     const unmarkedCount = todos.length - markedCount;
@@ -77,8 +71,8 @@ export default class MainSection extends Component<any, any> {
         <Footer markedCount={markedCount}
                 unmarkedCount={unmarkedCount}
                 filter={filter}
-                onClearMarked={::this.handleClearMarked}
-                onShow={::this.handleShow} />
+                onClearMarked={this.handleClearMarked.bind(this)}
+                onShow={this.handleShow.bind(this)} />
       );
     }
   }

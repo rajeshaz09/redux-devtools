@@ -47,7 +47,7 @@ export default class TodoItem extends Component {
                  type='checkbox'
                  checked={todo.marked}
                  onChange={() => markTodo(todo.id)} />
-          <label onDoubleClick={::this.handleDoubleClick}>
+          <label onDoubleClick={this.handleDoubleClick.bind(this)}>
             {todo.text}
           </label>
           <button className='destroy'
