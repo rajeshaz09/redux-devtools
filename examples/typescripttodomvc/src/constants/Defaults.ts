@@ -1,5 +1,5 @@
 
-import {TodoState, TodosState, RootState} from './Interfaces'
+import {TodoState, TodosState, RootState, VisibilityState} from './Interfaces'
 
 export const DefaultTodostate: TodoState = {
     text: 'Use Redux',
@@ -7,5 +7,5 @@ export const DefaultTodostate: TodoState = {
     id: 0
 };
 export const DefaultTodosState: TodosState = [DefaultTodostate];
-export const DefaultVisibilitytate: string = '';
-export const DefaultRootState: RootState = { todos: DefaultTodosState, visibilityFilter: DefaultVisibilitytate };
+export const DefaultFilterState: VisibilityState = '';
+export const DefaultRootState: RootState = { todos: DefaultTodosState};

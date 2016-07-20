@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose, Reducer } from 'redux';
 import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
 import DevTools from '../containers/DevTools';
-import {ICounterAction, RootState} from '../constants/interfaces';
+import {RootState} from '../constants/interfaces';
 import {DefaultRootState} from '../constants/defaults';
 
 

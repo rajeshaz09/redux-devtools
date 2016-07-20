@@ -31,9 +31,9 @@ if (module.hot) {
   module.hot.accept('./containers/Root', myRender);
 } else {
   render(
-      <RootContainer
-        store={ store }
-        />,
+    <RootContainer
+      store={ store }
+      />,
     rootElement
   )
 }

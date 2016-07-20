@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import * as TodoActions from '../actions/TodoActions';
+import {RootState, ITodoAction}  from '../constants/Interfaces';
 
-class TodoApp extends Component {
+
+class TodoApp extends Component<any, RootState> {
   render() {
     const { todos, actions } = this.props;
 
@@ -18,15 +21,15 @@ class TodoApp extends Component {
   }
 }
 
-function mapState(state) {
+function mapState(state: RootState) {
   return {
     todos: state.todos
   };
 }
 
-function mapDispatch(dispatch) {
+function mapDispatch(dispatch: Dispatch<ITodoAction>) {
   return {
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators<any>(TodoActions, dispatch)
   };
 }
 

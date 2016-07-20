@@ -1,20 +1,22 @@
+import {ActionCreator} from 'redux';
 import * as types from '../constants/ActionTypes';
+import {RootState, ITodoAction}  from '../constants/Interfaces';
 
-export function addTodo(text: string) {
+export const addTodo: ActionCreator<RootState> = (text: string) => {
   return {
     type: types.ADD_TODO,
     text
   };
 }
 
-export function deleteTodo(id: number) {
+export const deleteTodo: ActionCreator<RootState> = (id: number) =>{
   return {
     type: types.DELETE_TODO,
     id
   };
 }
 
-export function editTodo(id: number, text: string) {
+export const editTodo: ActionCreator<RootState> = (id: number, text: string) =>{
   return {
     type: types.EDIT_TODO,
     id,
@@ -22,20 +24,20 @@ export function editTodo(id: number, text: string) {
   };
 }
 
-export function markTodo(id: number) {
+export const markTodo: ActionCreator<RootState> = (id: number)=> {
   return {
     type: types.MARK_TODO,
     id
   };
 }
 
-export function markAll() {
+export const markAll: ActionCreator<RootState> = () =>{
   return {
     type: types.MARK_ALL
   };
 }
 
-export function clearMarked() {
+export const clearMarked: ActionCreator<RootState> = () =>{
   return {
     type: types.CLEAR_MARKED
   };

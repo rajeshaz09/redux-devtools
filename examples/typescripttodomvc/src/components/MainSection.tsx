@@ -3,8 +3,14 @@ import { PropTypes, Component } from 'react';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
 import { TODO_FILTERS, SHOW_ALL, SHOW_MARKED, SHOW_UNMARKED } from '../constants/TodoFilters';
+import { TodoState, TodosState, RootState, VisibilityState } from '../constants/Interfaces';
 
-export default class MainSection extends Component<any, any> {
+interface MainSectionProps{
+  todos: TodosState,
+  actions: any
+}
+
+export default class MainSection extends Component<MainSectionProps, RootState> {
   static propTypes = {
     todos: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired
@@ -16,13 +22,13 @@ export default class MainSection extends Component<any, any> {
   }
 
   handleClearMarked() {
-    const atLeastOneMarked = this.props.todos.some(todo => todo.marked);
+    const atLeastOneMarked = this.props.todos.some((todo: TodoState) => todo.marked);
     if (atLeastOneMarked) {
       this.props.actions.clearMarked();
     }
   }
 
-  handleShow(filter) {
+  handleShow(filter: VisibilityState) {
     this.setState({ filter });
   }
 
@@ -38,25 +44,25 @@ export default class MainSection extends Component<any, any> {
 
     return (
       <section className='main'>
-        {this.renderToggleAll(markedCount)}
+        {this.renderToggleAll(markedCount) }
         <ul className='todo-list'>
           {filteredTodos.map(todo =>
             <TodoItem key={todo.id} todo={todo} {...actions} />
-          )}
+          ) }
         </ul>
-        {this.renderFooter(markedCount)}
+        {this.renderFooter(markedCount) }
       </section>
     );
   }
 
-  renderToggleAll(markedCount: boolean) {
+  renderToggleAll(markedCount: number) {
     const { todos, actions } = this.props;
     if (todos.length > 0) {
       return (
         <input className='toggle-all'
-               type='checkbox'
-               checked={markedCount === todos.length}
-               onChange={actions.markAll} />
+          type='checkbox'
+          checked={markedCount === todos.length}
+          onChange={actions.markAll} />
       );
     }
   }
@@ -69,10 +75,10 @@ export default class MainSection extends Component<any, any> {
     if (todos.length) {
       return (
         <Footer markedCount={markedCount}
-                unmarkedCount={unmarkedCount}
-                filter={filter}
-                onClearMarked={this.handleClearMarked.bind(this)}
-                onShow={this.handleShow.bind(this)} />
+          unmarkedCount={unmarkedCount}
+          filter={filter}
+          onClearMarked={this.handleClearMarked.bind(this) }
+          onShow={this.handleShow.bind(this) } />
       );
     }
   }
