@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Component, PropTypes } from 'react';
-import * as classnames from 'classnames';
+const classnames:any = require('classnames');
 import TodoTextInput from './TodoTextInput';
 
 export default class TodoItem extends Component<any, any> {

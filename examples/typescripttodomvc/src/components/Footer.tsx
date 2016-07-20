@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PropTypes, Component } from 'react';
-import * as classnames from 'classnames';
+const classnames:any = require('classnames');
 import { SHOW_ALL, SHOW_UNMARKED, SHOW_MARKED, FILTER_TITLES } from '../constants/TodoFilters';
 
 

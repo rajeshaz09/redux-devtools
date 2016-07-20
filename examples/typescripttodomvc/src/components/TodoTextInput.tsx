@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PropTypes, Component } from 'react';
-import * as classnames from 'classnames';
+const classnames:any = require('classnames');
 
 export default class TodoTextInput extends Component<any, any> {
   static propTypes = {
@@ -39,6 +39,7 @@ export default class TodoTextInput extends Component<any, any> {
   }
 
   render() {
+    
     return (
       <input className={classnames({
               edit: this.props.editing,
