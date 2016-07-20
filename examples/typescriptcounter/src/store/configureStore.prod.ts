@@ -8,8 +8,6 @@ import {DefaultRootState} from '../constants/defaults';
 const rootReducer : any = require('../reducers');
 const enhancer = applyMiddleware(thunk);
 
-function ConfigureStore(initialState: RootState = DefaultRootState) {
-  return createStore<RootState>(rootReducer, initialState, enhancer);
+export default function ConfigureStore(initialState: RootState = DefaultRootState) {
+  return createStore<RootState>(rootReducer.default, initialState, enhancer);
 }
-
-export {ConfigureStore};

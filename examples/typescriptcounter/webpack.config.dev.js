@@ -28,7 +28,12 @@ module.exports = {
     contentBase: path.resolve('./src')
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),  
+    new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('!production')
+    }
+  })
   ],
   resolve: {
     root: path.resolve(settings.jsSrcPath),
