@@ -6,6 +6,6 @@ export const DefaultTodostate: TodoState = {
     marked: false,
     id: 0
 };
-export const DefaultTodosstate: TodosState = [DefaultTodostate];
+export const DefaultTodosState: TodosState = [DefaultTodostate];
 export const DefaultVisibilitytate: string = '';
-export const DefaultRootState: RootState = { todos: DefaultTodosstate, visibilityFilter: DefaultVisibilitytate };
+export const DefaultRootState: RootState = { todos: DefaultTodosState, visibilityFilter: DefaultVisibilitytate };

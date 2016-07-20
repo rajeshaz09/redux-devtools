@@ -1,12 +1,8 @@
 import { ADD_TODO, DELETE_TODO, EDIT_TODO, MARK_TODO, MARK_ALL, CLEAR_MARKED } from '../constants/ActionTypes';
+import { DefaultTodosState } from '../constants/Defaults';
+import { TodosState } from '../constants/Interfaces';
 
-const initialState = [{
-  text: 'Use Redux',
-  marked: false,
-  id: 0
-}];
-
-export default function todos(state = initialState, action: any) {
+export default function todos(state:TodosState = DefaultTodosState, action: any) {
   switch (action.type) {
     case ADD_TODO:
       return [{

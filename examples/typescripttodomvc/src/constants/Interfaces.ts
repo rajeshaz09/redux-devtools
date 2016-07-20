@@ -1,27 +1,25 @@
 import * as Redux from 'redux';
 
-interface ICounterAction extends Redux.Action {
+export interface ICounterAction extends Redux.Action {
     type: string;
 }
-interface TodoState {
+export interface TodoState {
     text: string,
     marked: boolean,
     id: number
 }
-type TodosState = Array<TodoState>
-interface RootState {
+export type TodosState = Array<TodoState>
+export interface RootState {
     todos: TodosState;
     visibilityFilter: string
 }
 
 
-interface ActionCreatersMap extends Redux.ActionCreatorsMapObject {
+export interface ActionCreatersMap extends Redux.ActionCreatorsMapObject {
     addTodoViaThunk: Redux.ActionCreator<ICounterAction>
 }
 
 
-interface IFilterType {
+export interface IFilterType {
     [name: string]: string;
 }
-
-export {ICounterAction, TodoState, TodosState, RootState, IFilterType};
